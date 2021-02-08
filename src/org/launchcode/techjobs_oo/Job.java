@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -31,8 +32,21 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
+
+    @Override
+    public String toString() {
+//        ArrayList<Class> jobConstructors = new ArrayList<Class>(employer, location, positionType, coreCompetency);
+//        String printStatement = "\nID: " + id;
+//        if (employer == null) {
+//            printStatement.concat("Employer: Data not available");
+//        } else {
+//            printStatement.concat("Employer: " + employer);
+//        }
+        String printStatement = "\nID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + "\n";
+        printStatement = printStatement.replace("null", "Data not available");
+        return printStatement;
+    }
+    // custom equals and hashCode methods
 
     @Override
     public boolean equals(Object o) {
