@@ -1,6 +1,5 @@
 package org.launchcode.techjobs_oo;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -35,17 +34,18 @@ public class Job {
 
     @Override
     public String toString() {
-//        ArrayList<Class> jobConstructors = new ArrayList<Class>(employer, location, positionType, coreCompetency);
-//        String printStatement = "\nID: " + id;
-//        if (employer == null) {
-//            printStatement.concat("Employer: Data not available");
-//        } else {
-//            printStatement.concat("Employer: " + employer);
-//        }
+
         String printStatement = "\nID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + "\n";
+
+        /*This replaces any empty class values with an error message.
+        Is there a better way to go about this that won't take 10+ lines of code or a ton of If statement?*/
+
+        printStatement = printStatement.replace(": \n", ": Data not available\n");
         printStatement = printStatement.replace("null", "Data not available");
+
         return printStatement;
     }
+
     // custom equals and hashCode methods
 
     @Override

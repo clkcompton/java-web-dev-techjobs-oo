@@ -12,7 +12,7 @@ public class JobTest {
     Job secondJob;
     Job thirdJob;
     Job fourthJob;
-//    Job jobWithNullValue;
+    Job jobWithNullValue;
 
 
     Employer jobEmployer;
@@ -20,7 +20,7 @@ public class JobTest {
     PositionType jobPosition;
     CoreCompetency jobCoreCompetency;
 
-//    Employer jobEmployerWithEmptyValue;
+    Employer jobEmployerWithEmptyValue;
 
 
     @Before
@@ -36,15 +36,17 @@ public class JobTest {
         thirdJob = new Job("Product tester", jobEmployer, jobLocation, jobPosition, jobCoreCompetency);
         fourthJob = new Job("Product tester", jobEmployer, jobLocation, jobPosition, jobCoreCompetency);
 
-//        jobEmployerWithEmptyValue = new Employer();
-//        jobWithNullValue = new Job("Product tester", jobEmployerWithEmptyValue, jobLocation, jobPosition, jobCoreCompetency);
+        jobEmployerWithEmptyValue = new Employer("");
+        jobWithNullValue = new Job("Product tester", jobEmployerWithEmptyValue, jobLocation, jobPosition, jobCoreCompetency);
     }
 
+    //checks for sequential ID numbers
     @Test
     public void testSettingJobId() {
         assertEquals(firstJob.getId(), secondJob.getId() - 1);
     }
 
+    //tests for correct constructor class and value assignments
     @Test
     public void testJobConstructorSetsAllFields() {
         assertTrue(thirdJob instanceof Job);
@@ -63,6 +65,7 @@ public class JobTest {
     assertEquals("Persistence", jobCoreCompetency.getValue(), thirdJob.getCoreCompetency().getValue());*/
     }
 
+    //tests
     @Test
     public void testJobsForEquality() {
         assertFalse(thirdJob.getId() == fourthJob.getId());
@@ -74,15 +77,18 @@ public class JobTest {
         assertEquals(thirdJob.getCoreCompetency(), fourthJob.getCoreCompetency());
     }
 
+    //checks for empty lines on either end of printed job string
     @Test
     public void testJobsToStringBlankLines() {
         assertTrue(firstJob.toString().endsWith("\n"));
         assertTrue(firstJob.toString().startsWith("\n"));
     }
 
+    //checks for null and class values with empty strings
     @Test
     public void testJobsToStringContainsLabel() {
         assertTrue(firstJob.toString().contains("Employer: Data not available"));
+        assertTrue(jobWithNullValue.toString().contains("Employer: Data not available"));
     }
 
 }
